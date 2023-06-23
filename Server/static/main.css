@@ -1,0 +1,29 @@
+.omniControlstyle{
+    font-family:'Times New Roman', Times, serif;
+    color: darkolivegreen;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .button-row {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+  }
+  

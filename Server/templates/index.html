@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Control</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  </head>
+  <body>
+    <h1 class="omniControlstyle">omniControl</h1>
+    <div class="button-cotainer">
+      <div class="button-row">
+        <button class="button" id="LFButton">LF</button>
+        <button class="button" id="forwardButton">Forward</button>
+        <button class="button" id="RFButton">RF</button>
+      </div>
+      <div class="button-row">
+        <button class="button" id="leftButton">Left</button>
+        <button class="button" id="stopButton">STOP</button>
+        <button class="button" id="rightButton">Right</button>
+      </div>
+      <div class="button-row">
+        <button class="button" id="LBButton">LB</button>
+        <button class="button" id="backwardButton">Backward</button>
+        <button class="button" id="RBButton">RB</button>
+      </div> 
+      <div class="button-row">
+        <button class="button" id="RotateCCW">CCW</button>
+        <button class="button" id="RotateCW">CW</button>
+      </div> 
+    </div>
+
+    <script>
+      // Function to handle button clicks
+      function buttonClicked(direction) {
+        // Send the direction to the server
+        fetch("/command", {
+          method: "POST",
+          body: JSON.stringify({ direction }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+      }
+
+      // Add click event listeners to the buttons
+      document
+        .getElementById("forwardButton")
+        .addEventListener("click", function () {
+          buttonClicked(":move:forward;");
+        });
+
+      document
+        .getElementById("backwardButton")
+        .addEventListener("click", function () {
+          buttonClicked(":move:backward;");
+        });
+
+      document
+        .getElementById("rightButton")
+        .addEventListener("click", function () {
+          buttonClicked(":move:right;");
+        });
+
+      document
+        .getElementById("leftButton")
+        .addEventListener("click", function () {
+          buttonClicked(":move:left;");
+        });
+
+        document
+        .getElementById("LFButton")
+        .addEventListener("click", function () {
+          buttonClicked(":move:forward:left;");
+        });
+
+        document
+        .getElementById("LBButton")
+        .addEventListener("click", function () {
+          buttonClicked(":move:backward:left;");
+        });
+
+        document
+        .getElementById("RFButton")
+        .addEventListener("click", function () {
+          buttonClicked(":move:forward:right;");
+        });
+
+        document
+        .getElementById("RBButton")
+        .addEventListener("click", function () {
+          buttonClicked(":move:backward:right;");
+        });
+
+        document
+        .getElementById("stopButton")
+        .addEventListener("click", function () {
+          buttonClicked(":move:stop;");
+        });
+
+        document
+        .getElementById("RotateCCW")
+        .addEventListener("click", function () {
+          buttonClicked(":rotate:CCW;");
+        });
+
+        document
+        .getElementById("RotateCW")
+        .addEventListener("click", function () {
+          buttonClicked(":rotate:CW;");
+        });
+    </script>
+  </body>
+</html>
